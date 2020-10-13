@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "kuberclaster-ba85"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "kuberclaster-ba85"
+  template:
+    metadata:
+      labels:
+        app: "kuberclaster-ba85"
+    spec:
+      containers:
+        - name: "kuberclaster-ba85"
+          image: "akscontainerrrr.azurecr.io/kuberclaster"
+          ports:
+          - containerPort: 5000
