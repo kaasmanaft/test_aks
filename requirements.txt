@@ -4,3 +4,5 @@ itsdangerous==0.24
 Jinja2>=2.10.1
 MarkupSafe==1.0
 Werkzeug==0.15.5
+msal==1.4.3
+Flask-Session==0.3.2
