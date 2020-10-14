@@ -1,6 +1,12 @@
 # Pull a pre-built alpine docker image with nginx and python3 installed
 FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
+#FROM alpine
+RUN apk update
+RUN apk add build-base
+RUN apk add  openssl-dev
+RUN apk add python3-dev
 
+RUN apk add libffi-dev
 # Set the port on which the app runs; make both values the same.
 #
 # IMPORTANT: When deploying to Azure App Service, go to the App Service on the Azure 
@@ -8,6 +14,7 @@ FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
 # WEBSITES_PORT with a value that matches the port here (the Azure default is 80).
 # You can also create a setting through the App Service Extension in VS Code.
 ENV LISTEN_PORT=5000
+ENV FLASK_ENV=development
 EXPOSE 5000
 
 # Indicate where uwsgi.ini lives
@@ -21,10 +28,14 @@ ENV UWSGI_INI uwsgi.ini
 ENV STATIC_URL /hello_app/static
 
 # Set the folder where uwsgi looks for the app
-WORKDIR /hello_app
-
+#WORKDIR /hello_app
 # Copy the app contents to the image
-COPY . /hello_app
+COPY hello_app /hello_app
+COPY requirements.txt /hello_app/requirements.txt
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir \
+    --no-warn-script-location \
+     -r /hello_app/requirements.txt
 
 # If you have additional requirements beyond Flask (which is included in the
 # base image), generate a requirements.txt file with pip freeze and uncomment
