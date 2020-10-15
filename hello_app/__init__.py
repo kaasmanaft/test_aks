@@ -14,7 +14,7 @@ def create_app():
         raise ValueError('This app is not meant to run in production. Run it according to instructions at top of this file.')
     elif app.config.get('ENV') == 'development':
         app.logger.level=logging.DEBUG
-        app.config.from_object(dev_config)
+        # app.config.from_object(dev_config)
     else:
         raise ValueError('production and development are the only options')
     #
