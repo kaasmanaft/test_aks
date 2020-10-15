@@ -57,7 +57,6 @@ def authorization_redirect():
 
     authorization_code = request.args.get('code', None)
     # return render_template("home.html")
-    return f"code is {authorization_code}"
 
     if authorization_code is None:
         current_app.logger.error("authorization_redirect: request to this endpoint must have 'code' URL query parameter")
@@ -81,6 +80,8 @@ def authorization_redirect():
             return redirect(url_for('post_sign_out')) # sign out on error
 
     # return redirect(url_for('index'))
+    return f"code is {authorization_code}"
+
     return redirect(url_for('auth.sign_in_status'))
 
 def _place_token_details_in_session(token_acquisition_result):
