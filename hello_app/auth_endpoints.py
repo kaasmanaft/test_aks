@@ -56,7 +56,8 @@ def authorization_redirect():
         return redirect(url_for('post_sign_out')) # sign out on error
 
     authorization_code = request.args.get('code', None)
-    return render_template("home.html")
+    # return render_template("home.html")
+    return f"code is {authorization_code}"
 
     if authorization_code is None:
         current_app.logger.error("authorization_redirect: request to this endpoint must have 'code' URL query parameter")
