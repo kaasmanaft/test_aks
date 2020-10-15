@@ -22,7 +22,7 @@ def create_app():
     #         app.config.from_mapping(config_dict)
 
     # init the serverside session on the app
-    Session(app)
+    # Session(app)
 
     # We have to push the context before registering auth endpoints blueprint
     app.app_context().push()

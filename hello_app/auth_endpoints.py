@@ -17,7 +17,7 @@ msal_instance = msal.ConfidentialClientApplication(
 
 @auth.route('/sign_in_status')
 def sign_in_status():
-    print('FFFFFFFFFFFFFFFFFF')
+    # print('FFFFFFFFFFFFFFFFFF')
     return render_template('auth/status.html')
 
 @auth.route('/token_details')
@@ -32,10 +32,11 @@ def token_details():
 def sign_in():
     current_app.logger.info("sign_in: request received at sign in endpoint. will redirect browser to Azure AD login")
     # state is important since the redirect endpoint needs to know that our app + same user session initiated the process (CSRF protection)
-    session["state"] = str(uuid.uuid4())
+    # session["state"] = str(uuid.uuid4())
     auth_url = msal_instance.get_authorization_request_url(
             config.get('SCOPES'),
-            state=session.get("state", None),
+            # state=session.get("state", None),
+            state=str(uuid.uuid4()),
             redirect_uri=config.get('REDIRECT_URI'),
             response_type=config.get('RESPONSE_TYPE'))
     return redirect(auth_url)
