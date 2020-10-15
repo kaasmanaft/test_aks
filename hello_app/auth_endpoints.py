@@ -46,10 +46,10 @@ def authorization_redirect():
     current_app.logger.info("authorization_redirect: request received at redirect endpoint")
     # CSRF protection: make sure to check that state matches the one we placed in session
     # This check ensures our app + the same user session made the /authorize request that resulted in this auth code redirect
-    state = session.get("state", None)
-    if state is None or request.args.get('state') != state:
-        current_app.logger.error("authorization redirect: state doesn't match. aborting.")
-        return redirect(url_for('index'))
+    # state = session.get("state", None)
+    # if state is None or request.args.get('state') != state:
+    #     current_app.logger.error("authorization redirect: state doesn't match. aborting.")
+    return redirect(url_for('index'))
 
     if 'error' in request.args:
         current_app.logger.error("authorization_redirect: AuthN / AuthZ failed: auth code request resulted in error. aborting.")
