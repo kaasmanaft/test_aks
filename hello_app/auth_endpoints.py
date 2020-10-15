@@ -50,6 +50,7 @@ def authorization_redirect():
     # if state is None or request.args.get('state') != state:
     #     current_app.logger.error("authorization redirect: state doesn't match. aborting.")
     # return redirect(url_for('auth.sign_in_status'))
+    return render_template("home.html")
 
     if 'error' in request.args:
         current_app.logger.error("authorization_redirect: AuthN / AuthZ failed: auth code request resulted in error. aborting.")
