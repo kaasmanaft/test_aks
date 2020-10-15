@@ -50,13 +50,14 @@ def authorization_redirect():
     # if state is None or request.args.get('state') != state:
     #     current_app.logger.error("authorization redirect: state doesn't match. aborting.")
     # return redirect(url_for('auth.sign_in_status'))
-    return render_template("home.html")
 
     if 'error' in request.args:
         current_app.logger.error("authorization_redirect: AuthN / AuthZ failed: auth code request resulted in error. aborting.")
         return redirect(url_for('post_sign_out')) # sign out on error
 
     authorization_code = request.args.get('code', None)
+    return render_template("home.html")
+
     if authorization_code is None:
         current_app.logger.error("authorization_redirect: request to this endpoint must have 'code' URL query parameter")
         return "Bad Request: request must have 'code' URL query parameter", 400
