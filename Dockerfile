@@ -28,9 +28,9 @@ ENV UWSGI_INI uwsgi.ini
 ENV STATIC_URL /hello_app/static
 
 # Set the folder where uwsgi looks for the app
-#WORKDIR /hello_app
+WORKDIR /hello_app
 # Copy the app contents to the image
-COPY hello_app /hello_app
+COPY . /hello_app
 COPY requirements.txt /hello_app/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir \
