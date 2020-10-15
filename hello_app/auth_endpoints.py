@@ -73,7 +73,9 @@ def authorization_redirect():
             # now we will place the token(s) and a boolean 'msal_authenticated = True' into the session for later use:
             current_app.logger.info("authorization_redirect: successfully obtained a token from the /token endpoint.")
             current_app.logger.debug(json.dumps(token_acquisition_result, indent=4, sort_keys=True))
-            _place_token_details_in_session(token_acquisition_result)
+            # _place_token_details_in_session(token_acquisition_result)
+            return f"code is {json.dumps(token_acquisition_result, indent=4, sort_keys=True)}"
+
         else:
             current_app.logger.error("AuthN / AuthZ failed: token request resulted in error")
             current_app.logger.error(f"{token_acquisition_result['error']}: {token_acquisition_result.get('error_description')}")
