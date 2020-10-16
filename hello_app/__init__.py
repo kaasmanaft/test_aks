@@ -1,7 +1,7 @@
 from flask import Flask  # Import the Flask class
 import os, logging
 from  . import config as dev_config
-from flask_session import Session
+# from flask_session import Session
 
 def create_app():
     app = Flask(__name__)    # Create an instance of the class for our use
@@ -22,7 +22,7 @@ def create_app():
     #         app.config.from_mapping(config_dict)
 
     # init the serverside session on the app
-    Session(app)
+    # Session(app)
 
     # We have to push the context before registering auth endpoints blueprint
     app.app_context().push()

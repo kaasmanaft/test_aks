@@ -4,10 +4,10 @@ import os
 
 # this is required for encrypting flask session cookies.
 SECRET_KEY = os.environ.get('SAMPLE_APP_ENCRYPTION_KEY','d..h2k~M9FdX1ueg9shmEUbjf.Z2v5t.Sp') # should be loaded from env vars or other secure location.
-SESSION_TYPE = 'filesystem'
+# SESSION_TYPE = 'filesystem'
 
 # Your Hosted or Local App URL. Flask runs the dev server on 127.0.0.1:5000 by default
-APP_URL = 'https://127.0.0.1:5001'
+APP_URL = 'https://127.0.0.1:5000'
 
 # Your app's redirect URL.
 REDIRECT_ENDPOINT = '/redirect'

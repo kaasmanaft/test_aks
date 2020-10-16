@@ -80,9 +80,9 @@ def authorization_redirect():
     return redirect(url_for('auth.sign_in_status'))
 
 def _place_token_details_in_session(token_acquisition_result):
-    session['msal_token_result']=token_acquisition_result
+    # session['msal_token_result']= token_acquisition_result
     session['msal_authenticated']=True
-    id_token_claims=token_acquisition_result.get('id_token_claims', {})
+    id_token_claims = token_acquisition_result.get('id_token_claims', {})
     session['msal_id_token_claims'] = id_token_claims
     session['msal_username'] = id_token_claims.get('name', None)
     
