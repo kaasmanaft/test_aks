@@ -7,7 +7,7 @@ SECRET_KEY = os.environ.get('SAMPLE_APP_ENCRYPTION_KEY','d..h2k~M9FdX1ueg9shmEUb
 # SESSION_TYPE = 'filesystem'
 
 # Your Hosted or Local App URL. Flask runs the dev server on 127.0.0.1:5000 by default
-APP_URL = 'https://127.0.0.1:5000'
+APP_URL = 'https://51.116.98.166:5000'
 
 # Your app's redirect URL.
 REDIRECT_ENDPOINT = '/redirect'
